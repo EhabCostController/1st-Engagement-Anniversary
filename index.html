@@ -229,7 +229,7 @@
             <div class="list-box">
                 ومن اليوم ده، وأنا حاسس إن في حاجة جوايا اتغيرت…<br>
                 بقيتي مش مجرد شخص بحبه…<br>
-                بقيتي جزء من يومي، من تفكيري، من صلاتي، كل خططي، من أحلامي، ومن كل صورة بتتخيلها عيني عن بكرة. ❤️🏡👩‍❤️‍👨
+                بقيتي جزء من يومي، من تفكيري، من صلاتي، كل خططي، من أحلامي، ومن كل صورة بتتخيلها عيني عن بكرة. ❤️🏡👩‍❤️️‍👨
             </div>
 
             <h2 class="section-title">365 يوم يا سوسكا…❤️</h2>
@@ -351,7 +351,7 @@
             <div class="handwritten">
                 وأنا مش عايز منك تكوني مثالية… أنا بحبك إنتي… بكل تفاصيلك. ❤️<br>
                 بحب هدوءك وجنانك. 😂 بحب دلعك وعنادك. بحب ضحكتك وزعلك. بحب كسوفك وثقتك. بحب لما تبقي حنينة، ولما تبقي طفلة، ولما تبقي قوية.<br>
-                بحب كل النسخ اللي فيكي… لأنهم كلهم سوسنتي. ❤️️🥹
+                بحب كل النسخ اللي فيكي… لأنهم كلهم سوسنتي. ❤🥹
             </div>
 
             <h2 class="section-title">العمر كله معاكي ♾️❤️</h2>
@@ -390,7 +390,7 @@
 
             <div class="handwritten" style="font-size:2rem; color:var(--gold); margin-top:30px;">
                 يا سوسنتي… يا سوسكا… يا بنتي… يا حبيبتي… يا صاحبتي… يا عيلتي… يا نصفي التاني… يا أجمل حاجة حصلتلي… ❤️❤️❤️<br><br>
-                كل ذكري خطوبة وإنتي طيبة يا أغلى وأحن وأجمل عطايا ربنا ليا. 🎉💍❤️
+                كل ذكري خطوبة وإنتي طيبة يا أغلى وأحن وأجمل عطايا ربنا ليا. 🎉💍❤️️
             </div>
 
             <div class="list-box">
@@ -411,12 +411,12 @@
 
             <div class="handwritten">
                 ويا رب السنة الجاية أقولك: فاكرة ايام الخطوبة؟" ونكون ساعتها بنضحك على كل حاجة حصلت ونقول: "شوفنا إزاي الأيام جريت بينا!" 🥹❤️<br>
-                وبعدها سنين وسنين… لحد ما تبقى كل ذكرياتنا مليانة بصورنا، وضحكتنا، وخلافاتنا الصغيرة، وانتصاراتنا، وأحلامنا اللي اتحققت، والحاجات اللي لسه بنحلم بيها. ❤️🏡♾️
+                وبعدها سنين وسنين… لحد ما تبقى كل ذكرياتنا مليانة بصورنا، وضحكتنا، وخلافاتنا الصغيرة، وانتصاراتنا، وأحلامنا اللي اتحققت، والحاجات اللي لسه بنحلم بيها. ❤️🏡♾️️
             </div>
 
             <div class="handwritten" style="font-size:1.8rem; color:var(--gold);">
                 أنا مش عايز سنة واحدة معاكي… أنا عايز العمر كله. ❤️<br>
-                مش عايز مجرد ذكرى حلوة… عايز حياة كاملة. ❤️️<br>
+                مش عايز مجرد ذكرى حلوة… عايز حياة كاملة. ❤<br>
                 مش عايزك تكوني جزء من حكايتي… إنتي عايزك تكوني الحكاية كلها. 🥹❤️♾️
             </div>
 
@@ -451,7 +451,7 @@
                 بحبك يا بنوتي…<br>
                 بحبك يا سندي…<br>
                 بحبك يا بيتي…<br>
-                بحبك يا أجمل شريكة. ❤️🥹♾️️
+                بحبك يا أجمل شريكة. ❤️🥹♾
             </div>
 
             <div class="list-box" style="text-align: center;">
@@ -468,40 +468,15 @@
     </div>
 
     <script>
-        // --- قائمة الصور المعروضة في السلايدر العلوي ---
-        const imagesList = [
-            "img1.jpg",
-            "img2.jpg",
-            "img3.jpg",
-            "img4.jpg",
-            "img5.jpg",
-            "img6.jpg",
-            "img7.jpg",
-            "img8.jpg",
-            "img9.jpg",
-            "img10.jpg",
-            "img11.jpg",
-            "img12.jpg",
-            "img13.jpg",
-            "img14.jpg",
-            "img15.jpg",
-            "img16.jpg",
-            "img17.jpg",
-            "img18.jpg",
-            "img19.jpg",
-            "img20.jpg",
-            "img21.jpg",
-            "img22.jpg",
-            "img23.jpg",
-            "img24.jpg",
-            "img25.jpg"
-        ];
+        // --- مصفوفة الـ 25 صورة بالكامل ---
+        const imagesList = Array.from({length: 25}, (_, i) => `img${i + 1}.jpg`);
 
         let currentImageIndex = 0;
+        let sliderInterval = null;
         const sliderImg = document.getElementById('sliderImg');
 
         function autoSlide() {
-            if(!sliderImg || imagesList.length === 0) return;
+            if (!sliderImg || imagesList.length === 0) return;
 
             currentImageIndex = (currentImageIndex + 1) % imagesList.length;
 
@@ -515,7 +490,17 @@
             }, 400);
         }
 
-        setInterval(autoSlide, 3000);
+        // في حالة تأخر تحميل صورة بسبب بطء النت على الموبايل يتخطاها فوراً
+        sliderImg.onerror = function() {
+            autoSlide();
+        };
+
+        // تشغيل السلايدر فقط بعد فتح شاشة القفل
+        function startGallery() {
+            if (!sliderInterval) {
+                sliderInterval = setInterval(autoSlide, 3000);
+            }
+        }
 
         // --- الإعدادات وقواعد الفتح ---
         const SECRET_PASS = "E+S=3/10/2025";
@@ -563,6 +548,7 @@
                 
                 setTimeout(() => {
                     document.getElementById('main-content').classList.add('active');
+                    startGallery(); // يبدأ عرض الصور من البداية عند الفتح فقط!
                 }, 1000);
             } else {
                 const randomMsg = errorMessages[Math.floor(Math.random() * errorMessages.length)];

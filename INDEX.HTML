@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى سوسنتي ❤️ - ذكرى خطوبتنا الأولى</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+
+        :root {
+            --bg-dark: #05160b; --gold: #d4af37; --red: #8b0000;
+            --snow-white: #fefbd8; --glass: rgba(0, 0, 0, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: radial-gradient(circle at center, #1a472a 0%, var(--bg-dark) 100%);
+            color: var(--snow-white); height: 100vh; overflow: hidden;
+            font-family: 'Amiri', serif;
+        }
+
+        /* تنسيق الشاشات التعريفية */
+        .overlay-screen {
+            position: fixed; inset: 0; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 20px; z-index: 5000; transition: 0.8s ease-in-out;
+        }
+
+        #condition-screen { background: #000; } 
+        #intro-screen { background: radial-gradient(circle, #0a2a16, #000); display: none; }
+        #sad-screen { background: #1a0000; display: none; z-index: 6000; }
+
+        .box {
+            padding: 35px; border: 1px solid var(--gold); border-radius: 25px;
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(15px);
+            max-width: 550px; width: 95%; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-green { 
+            background: #1a472a; color: white; border: 1px solid var(--gold); 
+            padding: 15px 30px; border-radius: 50px; cursor: pointer; 
+            margin-top: 20px; font-size: 1.2rem; width: 100%; transition: 0.3s;
+            font-family: 'Amiri', serif; font-weight: bold;
+        }
+        .btn-green:hover { background: #236139; transform: scale(1.02); }
+
+        .btn-red { background: none; color: #888; border: none; text-decoration: underline; cursor: pointer; margin-top: 15px; font-size: 0.9rem; }
+
+        /* شاشة القفل */
+        #lock-screen { 
+            position: fixed; inset: 0; background: radial-gradient(circle, #660000, #200000); 
+            display: flex; flex-direction: column; justify-content: center; 
+            align-items: center; z-index: 2000; transition: 1.2s cubic-bezier(0.7, 0, 0.3, 1); 
+        }
+
+        .lock-container {
+            text-align: center; padding: 40px; border: 2px solid var(--gold);
+            border-radius: 30px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+        }
+
+        input { 
+            padding: 15px; width: 280px; border-radius: 50px; border: 1px solid var(--gold); 
+            margin: 25px 0; text-align: center; font-size: 1.2rem; outline: none;
+            background: rgba(255,255,255,0.1); color: white;
+        }
+
+        /* المحتوى الرئيسي */
+        #main-content { 
+            width: 95%; max-width: 850px; height: 90vh; background: var(--glass); 
+            border: 1px solid var(--gold); border-radius: 35px; margin: 30px auto; 
+            padding: 50px 20px; overflow-y: auto; text-align: center; 
+            opacity: 0; transform: translateY(50px); transition: 2s ease;
+            scrollbar-width: thin; scrollbar-color: var(--gold) transparent;
+        }
+
+        .handwritten { font-size: 1.8rem; line-height: 2.2; margin-bottom: 35px; font-style: italic; color: #fff9e6; }
+        .main-header { font-size: 3.5rem; color: var(--gold); margin-bottom: 40px; text-shadow: 0 0 15px rgba(212,175,55,0.5); }
+        .list-box { background: rgba(212, 175, 55, 0.08); border-right: 5px solid var(--red); padding: 20px; margin: 25px 0; border-radius: 12px; text-align: right; font-size: 1.6rem; line-height: 1.8; }
+        
+        .polaroid { 
+            background: white; padding: 15px 15px 60px 15px; width: 90%; max-width: 420px; 
+            margin: 50px auto; box-shadow: 0 25px 50px rgba(0,0,0,0.8); 
+            transform: rotate(-2deg); transition: 0.5s ease;
+        }
+        .polaroid:nth-child(even) { transform: rotate(2deg); }
+        .polaroid img { width: 100%; height: auto; display: block; filter: contrast(105%); }
+        .polaroid:hover { transform: rotate(0) scale(1.03); }
+
+        .snowflake { position: fixed; top: -10px; color: white; pointer-events: none; z-index: 1500; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+        
+        .active { opacity: 1 !important; transform: translateY(0) !important; }
+    </style>
+</head>
+<body>
+
+    <div id="condition-screen" class="overlay-screen">
+        <div class="box">
+            <h1 style="font-size: 3.5rem; margin-bottom: 15px;">⚠️</h1>
+            <h2 style="color: var(--gold); margin-bottom: 15px; font-size: 1.8rem;">طلب صغير من بوب..</h2>
+            <p style="line-height: 1.8; font-size: 1.3rem; margin-bottom: 15px;">
+                عشان الذكرى دي تفضل محفورة في قلوبنا ومش بتتنسی خالص وعشان تقدري تحتفظي بالفكرة كذكرى على شكل فيديو عندك ع الموبايل..
+            </p>
+            <div style="background: rgba(212, 175, 55, 0.1); padding: 20px; border: 1px dashed var(--gold); border-radius: 15px; margin: 15px 0;">
+                <p style="color: var(--gold); font-weight: bold; font-size: 1.2rem; margin-bottom: 8px;">أرجوكي شغلي "تسجيل الشاشة" (Screen Record)</p>
+                <p style="font-size: 1rem; color: #ccc;">من اللحظة دي ولحد ما تخلصي المفاجأة لآخرها ❤️</p>
+            </div>
+            <button class="btn-green" onclick="goToIntro()">جاهزة.. وبدأت التسجيل 😍</button>
+        </div>
+    </div>
+
+    <div id="intro-screen" class="overlay-screen">
+        <div class="box">
+            <h1 style="font-size: 3.5rem; margin-bottom: 10px;">🌟</h1>
+            <h2 style="color: var(--gold); margin-bottom: 20px; font-size: 2.2rem;">إلى سوسنتي.. ونور عيني ❤️</h2>
+            <p style="line-height: 1.8; margin-bottom: 25px; font-size: 1.4rem;">
+                النهارده بيكمل أول سنة لينا سوا كخاطبين.. حبيت أحتفل بذكرى خطوبتنا الأولى بطريقتي، هديتي هي عالم صغير صنعتهولك بكل حب.. فيه جزء من حكايتنا اللي بتتحكي بالصور والكلام اللي طالع من قلبي ليكي.
+            </p>
+            <button class="btn-green" onclick="acceptIntro()">مستعدة أدخل عالمنا الصغير ✨</button>
+            <button class="btn-red" onclick="rejectIntro()">لأ، مش عايزة أشوف 🙄</button>
+        </div>
+    </div>
+
+    <div id="sad-screen" class="overlay-screen">
+        <div class="box">
+            <h1 style="font-size: 4rem;">😢</h1>
+            <h2 style="color: white; margin-bottom: 15px;">حزنتيني يا سوسنتي..</h2>
+            <p style="font-size: 1.2rem;">كنت محضرلك مفاجأة كبيرة لذكرى خطوبتنا، بس خلاص براحتك 💔</p>
+            <button class="btn-green" onclick="location.reload()">خلاص انا اسفة عايزة اشوف.. بهزر معاك 😂❤️</button>
+        </div>
+    </div>
+
+    <audio id="audioLock" loop><source src="music1.mp3" type="audio/mpeg"></audio>
+    <audio id="audioContent" loop><source src="music2.mp3" type="audio/mpeg"></audio>
+
+    <div id="lock-screen">
+        <div class="lock-container">
+            <h1 style="color: var(--gold); font-size: 4rem;">💍</h1>
+            <h2 style="color: white; font-size: 1.8rem;">سوسنتي.. اتعبي شوية عشان توصلي لهدية الذكرى الأولى</h2>
+            <input type="password" id="passInput" placeholder="تاريخ مهم في حياتنا؟ ...">
+            <br>
+            <button class="btn-green" style="width: auto; padding: 12px 60px;" onclick="checkUnlock()">نجرب التخمينة دي 🗝️</button>
+            <p id="errorMsg" style="color: #ff8080; margin-top: 15px; font-weight: bold; min-height: 24px;"></p>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <h1 class="main-header">سوسنتي ♥️💫</h1>
+        
+        <div class="handwritten">
+            سنة كاملة عدت على أحلى يوم في حياتي… يوم ما دبلتك نورت إيدي 💖<br>
+            سنة من الحب، والونس، والضحكة اللي مش بتتنسي 😘😍<br>
+            كل عيد خطوبة وانتي طيبة يا أحلى وأحن وأغلى حاجة في حياتي كلها 💞
+        </div>
+
+        <div class="list-box">✨ وانتي الونس وقت الوحدة، والأمان وقت الخوف، والضحكة وقت الدموع 💞</div>
+        
+        <div class="polaroid"><img src="img1.jpg"></div>
+
+        <h2 style="color:var(--gold); font-size:2.5rem; margin-bottom:20px;">يا بنت قلبي💗</h2>
+        <div class="handwritten">
+            سنة كاملة وانتي بنتي الصغنونة اللي في حضنها الدنيا بتهدى <br>
+            اللي عينها فيها راحة، وصوتها دافي، ولمستها فيها طبطبة🥰💫
+        </div>
+
+        <div class="polaroid"><img src="img2.jpg"></div>
+
+        <h2 style="color:var(--gold); font-size:2.5rem; margin-bottom:20px;">سوسنتي… 🧁</h2>
+        <div class="handwritten">
+            عارفة من يوم 3 أكتوبر اللي فات وأنا حاسس إني مالك الدنيا بحالها؟ 💖<br>
+            انتي مش بس خطيبتي، انتي روحي اللي بتطمني، ودنيتي اللي بتحلّي أي مُر 😍🤍
+        </div>
+
+        <div class="polaroid"><img src="img3.jpg"></div>
+
+        <div class="handwritten">
+            أول عيد خطوبة لينا، ويا رب العمر كله وانتي عيلتي، وبنتي، وحبيبتي، وصاحبتي، ونصفي التاني…<br>
+            اللي مهما الدنيا خدت وودت، أنا دايمًا راجعلك ♥️
+        </div>
+
+        <div class="polaroid"><img src="img4.jpg"></div>
+
+        <h2 style="color:var(--gold); font-size:2.5rem; margin-bottom:20px;">هو انا قولتلك قبل كدة أني بعشق 👇 😍💖</h2>
+        <div class="list-box">🎙️ نبرة صوتك وانتي متحمسة.. وطريقتك وانتي بتتدلعي.. وعينك اللي فيها أمان الدنيا 🥺💫</div>
+
+        <div class="polaroid"><img src="img5.jpg"></div>
+
+        <h2 style="color:var(--gold); font-size:2.5rem; margin-bottom:20px;">وعد بوب..</h2>
+        <div class="handwritten">
+            زي ما وعدتك يوم خطوبتنا.. أعدك بحب ما يعرفش التراجع.. حب واقف ثابت مهما الأيام مالَت 🌙<br>
+            وانك تبقي بنوتي المدللة وضحكتي وقت التعب طول العمر 💕
+        </div>
+
+        <div class="polaroid"><img src="img6.jpg"></div>
+
+        <div class="handwritten">
+            سنة عدت كأنها ثانية، كل يوم فيها بحمد ربنا عليكي <br>
+            كل سنة وانتي إنتي… بكل جنانك، ودلعك، وعنادك، وكل حاجة بحبها فيكي ❤️😍
+        </div>
+
+        <div class="polaroid"><img src="img7.jpg"></div>
+
+        <div class="handwritten" style="font-size:2.2rem; color:var(--gold); margin-top:50px;">
+            كل عيد خطوبة وانتي حبي، وهديتي، وعالمي🌍💖<br>
+            وكل سنة وانتي سوسنتي اللي بفتخر إني حبيبها وخطيبها وسندها ♥️🎉
+        </div>
+
+        <h1 style="color:var(--gold); margin:40px 0;">💍 Happy 1st Engagement Anniversary 🎉</h1>
+        <h1 style="color:var(--gold); margin:40px 0;">♾️ Forever With Me يا سوسنتي 🎉</h1>
+        <p style="opacity:0.6;">بوب ♥️ سوسكا | 3 أكتوبر</p>
+    </div>
+
+    <script>
+        // --- الإعدادات ---
+        const SECRET_PASS = "E+S=3/10/2025"; // كلمة السر
+        const audioLock = document.getElementById('audioLock');
+        const audioContent = document.getElementById('audioContent');
+
+        // رسائل الخطأ العشوائية
+        const errorMessages = [
+            "حزنتيني 💔 البوب بس هو اللي عارف الصح😉",
+            "تؤ تؤ.. مش أنتي سوسنتي ولا إيه؟ 😂",
+            "غلط يا روحي.. ركزي في تاريخ خطوبتنا سوا ❤️",
+            "المحاولة دي بلح.. فكري تاني يا بنوتي 🧁"
+        ];
+
+        // --- التحكم في الشاشات ---
+        function goToIntro() {
+            document.getElementById('condition-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('condition-screen').style.display = 'none';
+                document.getElementById('intro-screen').style.display = 'flex';
+            }, 800);
+        }
+
+        function acceptIntro() {
+            document.getElementById('intro-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('intro-screen').style.display = 'none';
+                // الموسيقى تبدأ هنا بعد تفاعل المستخدم
+                audioLock.play().catch(e => console.log("Audio play blocked"));
+            }, 800);
+        }
+
+        function rejectIntro() {
+            document.getElementById('intro-screen').style.display = 'none';
+            document.getElementById('sad-screen').style.display = 'flex';
+        }
+
+        function checkUnlock() {
+            const val = document.getElementById('passInput').value;
+            if(val === SECRET_PASS) {
+                // إيقاف وتصفير الصوت الأول
+                audioLock.pause();
+                audioLock.muted = true;
+                audioLock.currentTime = 0;
+
+                // تشغيل الصوت الثاني
+                audioContent.play().catch(e => console.log("Audio 2 error"));
+
+                // حركة فتح الصفحة
+                document.getElementById('lock-screen').style.transform = "translateY(-100%)";
+                
+                setTimeout(() => {
+                    document.getElementById('main-content').classList.add('active');
+                    document.body.style.overflowY = "auto";
+                }, 1000);
+            } else {
+                const randomMsg = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+                document.getElementById('errorMsg').innerText = randomMsg;
+                document.getElementById('passInput').value = "";
+            }
+        }
+
+        // --- تأثير الثلج ---
+        function createSnowflake() {
+            const snow = document.createElement('div');
+            snow.innerHTML = '❄';
+            snow.className = 'snowflake';
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snow.style.opacity = Math.random();
+            snow.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            document.body.appendChild(snow);
+            setTimeout(() => snow.remove(), 5000);
+        }
+        setInterval(createSnowflake, 150);
+
+        // دعم زر Enter في الكيبورد
+        document.getElementById('passInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkUnlock();
+        });
+    </script>
+</body>
+</html>

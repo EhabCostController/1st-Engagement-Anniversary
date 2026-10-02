@@ -9,7 +9,7 @@
 
         :root {
             --bg-dark: #05160b; --gold: #d4af37; --red: #8b0000;
-            --snow-white: #fefbd8; --glass: rgba(0, 0, 0, 0.85);
+            --snow-white: #fefbd8; --glass: rgba(0, 0, 0, 0.88);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,7 +20,7 @@
             font-family: 'Amiri', serif;
         }
 
-        /* تنسيق الشاشات التعريفية */
+        /* الشاشات التعريفية */
         .overlay-screen {
             position: fixed; inset: 0; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
@@ -65,27 +65,68 @@
             background: rgba(255,255,255,0.1); color: white;
         }
 
-        /* المحتوى الرئيسي */
+        /* Container المحتوى الرئيسي */
         #main-content { 
-            width: 95%; max-width: 850px; height: 90vh; background: var(--glass); 
-            border: 1px solid var(--gold); border-radius: 35px; margin: 30px auto; 
-            padding: 50px 20px; overflow-y: auto; text-align: center; 
-            opacity: 0; transform: translateY(50px); transition: 2s ease;
-            scrollbar-width: thin; scrollbar-color: var(--gold) transparent;
+            width: 95%; max-width: 800px; height: 92vh; background: var(--glass); 
+            border: 1px solid var(--gold); border-radius: 30px; margin: 4vh auto; 
+            display: flex; flex-direction: column; overflow: hidden;
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.25);
+            opacity: 0; transform: translateY(50px); transition: 1.5s ease;
         }
 
-        .handwritten { font-size: 1.8rem; line-height: 2.2; margin-bottom: 35px; font-style: italic; color: #fff9e6; }
-        .main-header { font-size: 3.5rem; color: var(--gold); margin-bottom: 40px; text-shadow: 0 0 15px rgba(212,175,55,0.5); }
-        .list-box { background: rgba(212, 175, 55, 0.08); border-right: 5px solid var(--red); padding: 20px; margin: 25px 0; border-radius: 12px; text-align: right; font-size: 1.6rem; line-height: 1.8; }
-        
-        .polaroid { 
-            background: white; padding: 15px 15px 60px 15px; width: 90%; max-width: 420px; 
-            margin: 50px auto; box-shadow: 0 25px 50px rgba(0,0,0,0.8); 
-            transform: rotate(-2deg); transition: 0.5s ease;
+        /* 1. المعرض الثابت فوق */
+        .fixed-gallery-frame {
+            position: relative;
+            width: 100%;
+            height: 38vh; /* ارتفاع الفريم العلوي */
+            min-height: 240px;
+            background: #000;
+            border-bottom: 2px solid var(--gold);
+            overflow: hidden;
+            flex-shrink: 0; /* منع انكماش الفريم أثناء السكرول */
         }
-        .polaroid:nth-child(even) { transform: rotate(2deg); }
-        .polaroid img { width: 100%; height: auto; display: block; filter: contrast(105%); }
-        .polaroid:hover { transform: rotate(0) scale(1.03); }
+
+        .slider-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        .gallery-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.75);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            backdrop-filter: blur(5px);
+        }
+
+        /* 2. النصوص القابلة للسكرول تحت */
+        .scrollable-text-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 35px 20px 60px 20px;
+            text-align: center;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) transparent;
+        }
+
+        .handwritten { font-size: 1.7rem; line-height: 2.2; margin-bottom: 35px; font-style: italic; color: #fff9e6; }
+        .main-header { font-size: 3.2rem; color: var(--gold); margin-bottom: 30px; text-shadow: 0 0 15px rgba(212,175,55,0.5); }
+        .list-box { background: rgba(212, 175, 55, 0.08); border-right: 5px solid var(--red); padding: 20px; margin: 25px 0; border-radius: 12px; text-align: right; font-size: 1.5rem; line-height: 1.8; }
 
         .snowflake { position: fixed; top: -10px; color: white; pointer-events: none; z-index: 1500; animation: fall linear infinite; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
@@ -115,7 +156,7 @@
             <h1 style="font-size: 3.5rem; margin-bottom: 10px;">🌟</h1>
             <h2 style="color: var(--gold); margin-bottom: 20px; font-size: 2.2rem;">إلى سوسنتي.. ونور عيني ❤️</h2>
             <p style="line-height: 1.8; margin-bottom: 25px; font-size: 1.4rem;">
-                النهارده بيكمل أول سنة لينا سوا كخاطبين.. حبيت أحتفل بذكرى خطوبتنا الأولى بطريقتي، هديتي هي عالم صغير صنعتهولك بكل حب.. فيه جزء من حكايتنا اللي بتتحكي بالصور والكلام اللي طالع من قلبي ليكي.
+                النهارده بيكمل أول سنة لينا سوا كخاطبين.. سنة كاملة من يوم ما ربنا جبر بخاطري وجمعني بيكي. حبيت أحتفل بذكرى خطوبتنا الأولى بطريقتي، هديتي هي عالم صغير صنعتهولك بكل حب.. فيه حتة من روحي، وتفاصيل من حكايتنا اللي عشناها سوا، وكلام طالع من أعمق مكان في قلبي ليكي.
             </p>
             <button class="btn-green" onclick="acceptIntro()">مستعدة أدخل عالمنا الصغير ✨</button>
             <button class="btn-red" onclick="rejectIntro()">لأ، مش عايزة أشوف 🙄</button>
@@ -126,7 +167,7 @@
         <div class="box">
             <h1 style="font-size: 4rem;">😢</h1>
             <h2 style="color: white; margin-bottom: 15px;">حزنتيني يا سوسنتي..</h2>
-            <p style="font-size: 1.2rem;">كنت محضرلك مفاجأة كبيرة لذكرى خطوبتنا، بس خلاص براحتك 💔</p>
+            <p style="font-size: 1.2rem;">كنت محضرلك مفاجأة بتلخص أجمل سنة في عمري، بس خلاص براحتك 💔</p>
             <button class="btn-green" onclick="location.reload()">خلاص انا اسفة عايزة اشوف.. بهزر معاك 😂❤️</button>
         </div>
     </div>
@@ -138,7 +179,7 @@
         <div class="lock-container">
             <h1 style="color: var(--gold); font-size: 4rem;">💍</h1>
             <h2 style="color: white; font-size: 1.8rem;">سوسنتي.. اتعبي شوية عشان توصلي لهدية الذكرى الأولى</h2>
-            <input type="password" id="passInput" placeholder="تاريخ مهم في حياتنا؟ ...">
+            <input type="password" id="passInput" placeholder="تاريخ خطوبتنا؟ ...">
             <br>
             <button class="btn-green" style="width: auto; padding: 12px 60px;" onclick="checkUnlock()">نجرب التخمينة دي 🗝️</button>
             <p id="errorMsg" style="color: #ff8080; margin-top: 15px; font-weight: bold; min-height: 24px;"></p>
@@ -146,78 +187,125 @@
     </div>
 
     <div id="main-content">
-        <h1 class="main-header">سوسنتي ♥️💫</h1>
         
-        <div class="handwritten">
-            سنة كاملة عدت على أحلى يوم في حياتي… يوم ما دبلتك نورت إيدي 💖<br>
-            سنة من الحب، والونس، والضحكة اللي مش بتتنسي 😘😍<br>
-            كل عيد خطوبة وانتي طيبة يا أحلى وأحن وأغلى حاجة في حياتي كلها 💞
+        <!-- المعرض الثابت فوق -->
+        <div class="fixed-gallery-frame">
+            <div class="slider-wrapper">
+                <img id="sliderImg" src="img1.jpg" alt="سوسنتي وبوب">
+            </div>
+            <div class="gallery-badge">📸 ألبوم ذكرياتنا الباقية</div>
         </div>
 
-        <div class="list-box">✨ وانتي الونس وقت الوحدة، والأمان وقت الخوف، والضحكة وقت الدموع 💞</div>
-        
-        <div class="polaroid"><img src="img1.jpg"></div>
+        <!-- النصوص القابلة للتمرير (السكرول) تحت -->
+        <div class="scrollable-text-content">
+            <h1 class="main-header">سوسنتي ♥️💫</h1>
+            
+            <div class="handwritten">
+                سنة كاملة عدت على أجمل لحظة في عمري… يوم ما دبلتي حضنت إيدك، ويوم ما قلبي اتكتب باسمك رسمي 💍<br>
+                فاكرة اليوم ده؟ فاكرة لمعة عينيكي وكسوفك؟ اليوم ده أنا اتولدت فيه من جديد.<br>
+                سنة من الحب، والونس، والضحكة اللي بتخطف قلبي كل مرة كأنها أول مرة 😘😍<br>
+                كل عيد خطوبة وانتي طيبة يا أحلى وأحن وأغلى عطايا ربنا ليا 💞
+            </div>
 
-        <h2 style="color:var(--gold); font-size:2.5rem; margin-bottom:20px;">يا بنت قلبي💗</h2>
-        <div class="handwritten">
-            سنة كاملة وانتي بنتي الصغنونة اللي في حضنها الدنيا بتهدى <br>
-            اللي عينها فيها راحة، وصوتها دافي، ولمستها فيها طبطبة🥰💫
+            <div class="list-box">✨ 365 يوم.. كل يوم فيهم بتأكد إنك أجمل اختيار، وانك العوض اللي طال استناه.. وانتي الونس وقت الوحدة، والأمان وقت الخوف 💞</div>
+
+            <h2 style="color:var(--gold); font-size:2.3rem; margin: 30px 0 15px 0;">يا بنت قلبي ووتيني💗</h2>
+            <div class="handwritten">
+                سنة كاملة وانتي بنتي الصغنونة اللي في حضنها الدنيا كلها بتهدى وتصفى <br>
+                اللي عينها فيها براح وراحة، وصوتها دافي بيطمنني، ولمستها فيها طبطبة بتنسيني أي تعب 🥰💫<br>
+                عرفت معاكي يعني إيه يكون ليا "بيت" جوه روح إنسانة.. إنتي بيتي يا سوسنتي.
+            </div>
+
+            <h2 style="color:var(--gold); font-size:2.3rem; margin: 30px 0 15px 0;">سوسنتي… 🧁</h2>
+            <div class="handwritten">
+                عارفة من يوم 3 أكتوبر اللي فات وأنا حاسس إني مالك الدنيا بحالها؟ 💖<br>
+                انتي مش بس خطيبتي، انتي روحي اللي بتطمني، ودنيتي اللي بتحلّي أي مُر 😍🤍<br>
+                لما بيقولوا إن الحب أفعال، أنا بشوف ده في خوفك عليا، في اهتمامك بتفاصيلي، وفي دعواتك ليا اللي سانداني في كل خطوة.
+            </div>
+
+            <div class="handwritten">
+                أول عيد خطوبة لينا، ويا رب العمر كله وانتي عيلتي، وبنتي، وحبيبتي، وصاحبتي، ونصفي التاني…<br>
+                اللي مهما الدنيا خدت وودت، أنا دايمًا ماليش غير حضنك أرجعله ♥️<br>
+                معاكي حسيت إن الأيام ليها طعم، وإن بكرة أحلى عشان إنتي فيه.
+            </div>
+
+            <h2 style="color:var(--gold); font-size:2.3rem; margin: 30px 0 15px 0;">تفاصيل بتخطف قلبي 👇 😍💖</h2>
+            <div class="list-box">
+                🎙️️ نبرة صوتك وانتي متحمسة وبتحكيلي حاجة من يومك.. <br>
+                🥺 طريقتك وانتي بتتدلعي عليا وعينك اللي مليانة براءة.. <br>
+                🥰 جنانك المفاجئ، وعصبيتك اللي بتدوب في ثانية، وكلمة "بوب" اللي بتطلع منك بتخلي قلبي يرقص 💫
+            </div>
+
+            <h2 style="color:var(--gold); font-size:2.3rem; margin: 30px 0 15px 0;">عهد ووعد بوب..</h2>
+            <div class="handwritten">
+                زي ما وعدتك يوم خطوبتنا ولبسنا الدبل.. أعدك بحب ما يعرفش التراجع.. حب واقف ثابت مهما الأيام مالَت 🌙<br>
+                بوعدك أكون ضهرك وسندك.. أكون الأمان اللي بتستخبي فيه من قسوة الدنيا..<br>
+                وانك هتفضلي بنوتي المدللة، وضحكتي وقت التعب، وأغلى حاجة عندي طول العمر 💕
+            </div>
+
+            <div class="handwritten">
+                سنة عدت كأنها ثانية، وكل يوم بفتح عيني بحمد ربنا إنك نصيبي وقسمتي <br>
+                كل سنة وانتي إنتي… بكل جنانك، ودلعك، وعنادك، وكل تفصيلة فيكي أنا متيم بيها ❤️😍<br>
+                كل ذكرى خطوبة وإحنا ماسكين في إيد بعض أقوى من الأول.
+            </div>
+
+            <div class="handwritten" style="font-size:2rem; color:var(--gold); margin-top:40px;">
+                كل عيد خطوبة وانتي حبي، وهديتي من السما، وعالمي كله 🌍💖<br>
+                وكل سنة وانتي سوسنتي اللي بفتخر قدام الدنيا كلها إني حبيبها وخطيبها وسندها ♥️🎉
+            </div>
+
+            <h1 style="color:var(--gold); margin:35px 0 15px 0; font-size: 2.2rem;">💍 Happy 1st Engagement Anniversary 🎉</h1>
+            <h1 style="color:var(--gold); margin-bottom:30px; font-size: 2.2rem;">♾️ Forever With Me يا سوسنتي 🎉</h1>
+            <p style="opacity:0.6; font-size: 1.1rem;">بوب ♥️ سوسكا | 3 أكتوبر 2026</p>
         </div>
 
-        <div class="polaroid"><img src="img2.jpg"></div>
-
-        <h2 style="color:var(--gold); font-size:2.5rem; margin-bottom:20px;">سوسنتي… 🧁</h2>
-        <div class="handwritten">
-            عارفة من يوم 3 أكتوبر اللي فات وأنا حاسس إني مالك الدنيا بحالها؟ 💖<br>
-            انتي مش بس خطيبتي، انتي روحي اللي بتطمني، ودنيتي اللي بتحلّي أي مُر 😍🤍
-        </div>
-
-        <div class="polaroid"><img src="img3.jpg"></div>
-
-        <div class="handwritten">
-            أول عيد خطوبة لينا، ويا رب العمر كله وانتي عيلتي، وبنتي، وحبيبتي، وصاحبتي، ونصفي التاني…<br>
-            اللي مهما الدنيا خدت وودت، أنا دايمًا راجعلك ♥️
-        </div>
-
-        <div class="polaroid"><img src="img4.jpg"></div>
-
-        <h2 style="color:var(--gold); font-size:2.5rem; margin-bottom:20px;">هو انا قولتلك قبل كدة أني بعشق 👇 😍💖</h2>
-        <div class="list-box">🎙️ نبرة صوتك وانتي متحمسة.. وطريقتك وانتي بتتدلعي.. وعينك اللي فيها أمان الدنيا 🥺💫</div>
-
-        <div class="polaroid"><img src="img5.jpg"></div>
-
-        <h2 style="color:var(--gold); font-size:2.5rem; margin-bottom:20px;">وعد بوب..</h2>
-        <div class="handwritten">
-            زي ما وعدتك يوم خطوبتنا.. أعدك بحب ما يعرفش التراجع.. حب واقف ثابت مهما الأيام مالَت 🌙<br>
-            وانك تبقي بنوتي المدللة وضحكتي وقت التعب طول العمر 💕
-        </div>
-
-        <div class="polaroid"><img src="img6.jpg"></div>
-
-        <div class="handwritten">
-            سنة عدت كأنها ثانية، كل يوم فيها بحمد ربنا عليكي <br>
-            كل سنة وانتي إنتي… بكل جنانك، ودلعك، وعنادك، وكل حاجة بحبها فيكي ❤️😍
-        </div>
-
-        <div class="polaroid"><img src="img7.jpg"></div>
-
-        <div class="handwritten" style="font-size:2.2rem; color:var(--gold); margin-top:50px;">
-            كل عيد خطوبة وانتي حبي، وهديتي، وعالمي🌍💖<br>
-            وكل سنة وانتي سوسنتي اللي بفتخر إني حبيبها وخطيبها وسندها ♥️🎉
-        </div>
-
-        <h1 style="color:var(--gold); margin:40px 0;">💍 Happy 1st Engagement Anniversary 🎉</h1>
-        <h1 style="color:var(--gold); margin:40px 0;">♾️ Forever With Me يا سوسنتي 🎉</h1>
-        <p style="opacity:0.6;">بوب ♥️ سوسكا | 3 أكتوبر</p>
     </div>
 
     <script>
-        // --- الإعدادات ---
-        const SECRET_PASS = "E+S=3/10/2025"; // كلمة السر
+        // --- قائمة الصور المعروضة في السلايدر العلوي ---
+        // يمكنك إضافة أعداد لا حصر لها من الصور داخل هذه مصفوفة (Array)
+        const imagesList = [
+            "img1.jpg",
+            "img2.jpg",
+            "img3.jpg",
+            "img4.jpg",
+            "img5.jpg",
+            "img6.jpg",
+            "img7.jpg"
+            // إذا أردت إضافة صور إضافية، اكتب اسم الصورة بين علامتي تنصيص ومتبوعة بفصلة، مثال:
+            // "img8.jpg",
+            // "img9.jpg"
+        ];
+
+        let currentImageIndex = 0;
+        const sliderImg = document.getElementById('sliderImg');
+
+        // دالة تبديل الصور التلقائية
+        function autoSlide() {
+            if(!sliderImg || imagesList.length === 0) return;
+
+            currentImageIndex = (currentImageIndex + 1) % imagesList.length;
+
+            // تأثير اختفاء تدريجي قبل تغيير الصورة
+            sliderImg.style.opacity = '0';
+            sliderImg.style.transform = 'scale(1.05)';
+
+            setTimeout(() => {
+                sliderImg.src = imagesList[currentImageIndex];
+                sliderImg.style.opacity = '1';
+                sliderImg.style.transform = 'scale(1)';
+            }, 400); // 400 مللي ثانية لسلاسة الانتقال
+        }
+
+        // تشغيل التبديل التلقائي كل 3 ثوانٍ
+        setInterval(autoSlide, 3000);
+
+
+        // --- الإعدادات وقواعد الفتح ---
+        const SECRET_PASS = "E+S=3/10/2025";
         const audioLock = document.getElementById('audioLock');
         const audioContent = document.getElementById('audioContent');
 
-        // رسائل الخطأ العشوائية
         const errorMessages = [
             "حزنتيني 💔 البوب بس هو اللي عارف الصح😉",
             "تؤ تؤ.. مش أنتي سوسنتي ولا إيه؟ 😂",
@@ -225,7 +313,6 @@
             "المحاولة دي بلح.. فكري تاني يا بنوتي 🧁"
         ];
 
-        // --- التحكم في الشاشات ---
         function goToIntro() {
             document.getElementById('condition-screen').style.opacity = '0';
             setTimeout(() => {
@@ -238,7 +325,6 @@
             document.getElementById('intro-screen').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('intro-screen').style.display = 'none';
-                // الموسيقى تبدأ هنا بعد تفاعل المستخدم
                 audioLock.play().catch(e => console.log("Audio play blocked"));
             }, 800);
         }
@@ -251,20 +337,16 @@
         function checkUnlock() {
             const val = document.getElementById('passInput').value;
             if(val === SECRET_PASS) {
-                // إيقاف وتصفير الصوت الأول
                 audioLock.pause();
                 audioLock.muted = true;
                 audioLock.currentTime = 0;
 
-                // تشغيل الصوت الثاني
                 audioContent.play().catch(e => console.log("Audio 2 error"));
 
-                // حركة فتح الصفحة
                 document.getElementById('lock-screen').style.transform = "translateY(-100%)";
                 
                 setTimeout(() => {
                     document.getElementById('main-content').classList.add('active');
-                    document.body.style.overflowY = "auto";
                 }, 1000);
             } else {
                 const randomMsg = errorMessages[Math.floor(Math.random() * errorMessages.length)];
@@ -273,7 +355,7 @@
             }
         }
 
-        // --- تأثير الثلج ---
+        // تأثير الثلج
         function createSnowflake() {
             const snow = document.createElement('div');
             snow.innerHTML = '❄';
@@ -287,7 +369,6 @@
         }
         setInterval(createSnowflake, 150);
 
-        // دعم زر Enter في الكيبورد
         document.getElementById('passInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') checkUnlock();
         });
